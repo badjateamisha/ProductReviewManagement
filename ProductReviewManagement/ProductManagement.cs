@@ -122,7 +122,7 @@ namespace ProductReviewManagement
                 Console.WriteLine($"{row["ProductId"]}\t|{row["UserId"]}\t|{row["Rating"]}\t|{row["Review"]}\t|{row["Islike"]}");
             }
         }
-        //retrive Data from datatable who's islike value is true
+        //Retrive Data from datatable who's islike value is true
 
         public void RetriveRecords_IsLike_True(List<ProductReview> productReviewList)
         {
@@ -133,6 +133,18 @@ namespace ProductReviewManagement
             foreach (var list in ProductData1)
             {
                 Console.WriteLine("ProductID :" + list.ProductID + "  " + "UserID :" + list.UserID + "  " + "Rating :" + list.Rating + "  " + "Review :" + list.Review + "  " + "isLike :" + list.isLike);
+            }
+        }
+        //Retrive Average Rating for each productid
+        public void AvgRating(List<ProductReview> productreviewlist)
+        {
+            foreach (var line in productreviewlist.GroupBy(info => info.ProductID).Select(group => new
+            {
+                products = group.Key,
+                Count = group.Average(a => a.Rating)
+            }))
+            {
+                Console.WriteLine("Product Id:{0} => Average Rating :{1}", line.products, line.Count);
             }
         }
     }
