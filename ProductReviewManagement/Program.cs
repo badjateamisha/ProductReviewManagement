@@ -40,7 +40,7 @@ productReviewList.Add(new ProductReview() { ProductID = 24, UserID = 10, Rating 
 productReviewList.Add(new ProductReview() { ProductID = 25, UserID = 10, Rating = 5, Review = "Excellent", isLike = true });
 
 //Display list
-Console.WriteLine("Select \n1)Create Product Review List with 25 Default values\n2)Retrive Top 3 Records with high rating\n3)Details from Records(1,4,9) with rating > 3 \n4)Count By ProductID\n5)Retreive ProductID and ProductReview\n6)Skip top 5 records from the list\n7)Retrieve ProductId and review");
+Console.WriteLine("Select \n1)Create Product Review List with 25 Default values\n2)Retrive Top 3 Records with high rating\n3)Details from Records(1,4,9) with rating > 3 \n4)Count By ProductID\n5)Retreive ProductID and ProductReview\n6)Skip top 5 records from the list\n7)Retrieve ProductId and review\n8)Creating DataTables");
 int option = Convert.ToInt16(Console.ReadLine());
 switch (option)
 {
@@ -73,6 +73,10 @@ switch (option)
     case 7:
         ProductManagement UC7 = new ProductManagement();
         UC7.RetrieveProductIdAndReview(productReviewList);
+        break;
+    case 8:
+        ProductManagement UC8 = new ProductManagement();
+        UC8.Datatables();
         break;
     default:
         Console.WriteLine("Please choose the correct option!");
